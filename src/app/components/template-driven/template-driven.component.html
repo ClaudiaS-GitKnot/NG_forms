@@ -1,0 +1,73 @@
+<div class="container">
+  <h1>Demo Template Driven Form</h1>
+  <hr />
+  <form #ex1_form="ngForm">
+    <label for="nome">Nome</label>
+    <input
+      #nome="ngModel"
+      [(ngModel)]="ex1_nome"
+      type="text"
+      name="nome"
+      id="nome"
+      class="form-control"
+      [ngClass]="{ 'is-invalid': nome.invalid && nome.touched }"
+      required
+    />
+    <div class="small text-danger" *ngIf="nome.invalid && nome.touched">
+      Inserisci il nome
+    </div>
+    <label for="email">Email</label>
+    <input
+      #email="ngModel"
+      [(ngModel)]="ex1_email"
+      type="email"
+      name="email"
+      id="email"
+      class="form-control"
+      [ngClass]="{ 'is-invalid': email.invalid && email.touched }"
+      required
+      [pattern]="email_format"
+    />
+    <ng-container *ngIf="email.errors && email.touched">
+      <div class="small text-danger" *ngIf="email.errors['required']">
+        <!-- acceddo all'attributo required con le quadre (errors è di tipo ValidationErrors | null che è un oggetto > {[key: string]: any} -->
+        Campo obbligatorio
+      </div>
+      <div class="small text-danger" *ngIf="email.errors['pattern']">
+        Inserisci una email valida
+      </div>
+    </ng-container>
+
+    <label for="msg">Messaggio</label>
+    <textarea
+      #msg="ngModel"
+      [(ngModel)]="ex1_msg"
+      id="msg"
+      name="msg"
+      class="form-control"
+      minlength="10"
+    ></textarea>
+
+    <ng-container *ngIf="msg.errors && msg.touched">
+      <div class="text-danger">
+        Inserisci altri
+        {{
+          msg.errors["minlength"]["requiredLength"] -
+            msg.errors["minlength"]["actualLength"]
+        }}
+        caratteri
+      </div>
+    </ng-container>
+
+    <!-- <pre>{{ msg.errors | json }}</pre> -->
+
+    <button
+      type="submit"
+      class="btn btn-primary mt-2"
+      [disabled]="ex1_form.invalid"
+    >
+      Invia
+    </button>
+  </form>
+  <!-- <pre>{{ex1_nome}}</pre> -->
+</div>
