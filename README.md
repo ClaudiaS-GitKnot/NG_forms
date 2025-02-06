@@ -16,6 +16,28 @@ email.errors controllo della mail (required: true - pattern) o valida (null)
 
 Navbar | Home | Dropdown menu | Routing | RouterLink Active | RouterLinkOptions
 
+# - Third Commit - Reactive Form in Reactive1Component
+
+APPUNTI:
+
+- Nei reactive forms non è necessario l'attributo 'name'
+- Inserisco nell'input la proprietà [formControl] con il valore della proprietà dell'input definita nello script - N.B. se si tratta di più di un input la proprietà .ts diventa un oggetto che contiene più chiavi -> myForm = { nome: '', cognome: '' }
+- Il FormControl permette di accedere alla classe Validators direttamente dallo script: required | minLength | maxLength | min | max | pattern | email | custom
+- Il FormControl permette di accedere alle proprietà e ai metodi della form come ad esempio valueChanges che aiuta nel monitorare con le Osbervable il cambiamento di un valore. N.B. Quando l'Observable si trova in ngOnInit() significa che parte al caricamento del componente. Se voglio bloccare il flusso utilizzo l'oggetto { emitEvent: false }
+- Metodi:
+  - setValue(<valore>) | cambia il valore del campo
+  - reset() | resetta il valore del campo
+  - disable() | disabilita il campo
+  - enable() | abilita il campo
+  - addValidators(Validators.<validatore>) | aggiunge un validatore al campo
+  - removeValidators(Validators.<validatore>) | rimuove il validatore dal campo
+  - updateValueAndValidity() | ricalcola il valore e la validazione del campo
+- Il FormControl permette di accedere alle proprietà di validazione in HTML:
+  - errors | è la proprietà dell'oggetto ValidationErrors e controlla se sono presenti errori di validazione nel campo (es. name.errors['minLength'])
+  - valid / invalid | lo stato del campo è valido o non valido
+  - dirty / pristine | il valore del campo è cambiato o non è cambiato
+  - touched / untouched | il campo ha preso il focus o non ha preso il focus
+
 # NGForms
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.

@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <h3>Singolo FormControl</h3>
+  <h3>Singolo FormControl - valueChanges</h3>
   <label for="nome">Nome</label>
   <!-- Nei Reactive Forms non è necessario l'attributo name -->
   <!-- Inserisco la proprietà [formControl] con valore 'nome'(proprietà definita nel .ts) -->
@@ -19,5 +19,52 @@
   </button>
   <button type="button" class="btn btn-primary" (click)="reimpostaNome()">
     Reimposta nome
+  </button>
+
+  <hr />
+
+  <h3>Singolo FormControl - validatori</h3>
+  <p>Required, MinLength, MaxLength, Min, Max, Pattern, Email, Custom</p>
+  <label for="eta">Inserisci l'età</label>
+  <input
+    [formControl]="eta"
+    type="number"
+    class="form-control"
+    placeholder="18...99"
+    id="eta"
+  />
+
+  <ng-container *ngIf="eta.errors && eta.invalid">
+    <div *ngIf="eta.errors['min']" class="small text-danger">
+      L'età deve essere minimo 18
+    </div>
+    <div *ngIf="eta.errors['max']" class="small text-danger">
+      L'età deve essere massimo 99
+    </div>
+  </ng-container>
+
+  <hr />
+
+  <h3>Singolo FormControl - Validatore "dinamico"</h3>
+  <p>
+    In questo esempio il validatore viene gestito dinamicamente dal component
+  </p>
+  <div class="form-check">
+    <input
+      [formControl]="ccCheckBox"
+      class="form-check-input"
+      type="checkbox"
+      value=""
+      id="hasContoCorrente"
+    />
+    <label class="form-check-label" for="hasContoCorrente">
+      Ho un conto corrente
+    </label>
+  </div>
+  <label for="ccNumber">Numero di conto</label>
+  <input type="text" class="form-control" [formControl]="ccNumber" />
+  <br />
+  <button type="buitton" class="btn btn-primary" [disabled]="ccNumber.invalid">
+    Procedi
   </button>
 </div>
