@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <h3>Singolo FormControl</h3>
+  <label for="nome">Nome</label>
+  <!-- Nei Reactive Forms non è necessario l'attributo name -->
+  <!-- Inserisco la proprietà [formControl] con valore 'nome'(proprietà definita nel .ts) -->
+  <input
+    [formControl]="nome"
+    type="text"
+    class="form-control mb-2"
+    id="nome"
+    placeholder="Inserisci il nome..."
+  />
+  <button type="button" class="btn btn-primary" (click)="mostraNome()">
+    Stampa nome
+  </button>
+  <button type="button" class="btn btn-primary" (click)="cambiaNome()">
+    Cambia nome
+  </button>
+  <button type="button" class="btn btn-primary" (click)="reimpostaNome()">
+    Reimposta nome
+  </button>
+</div>
