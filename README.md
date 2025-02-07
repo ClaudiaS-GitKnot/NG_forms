@@ -16,7 +16,7 @@ email.errors controllo della mail (required: true - pattern) o valida (null)
 
 Navbar | Home | Dropdown menu | Routing | RouterLink Active | RouterLinkOptions
 
-# - Third Commit - Reactive Form in Reactive1Component
+# - Third Commit - Reactive Form - FormControl in Reactive1Component
 
 APPUNTI:
 
@@ -37,6 +37,16 @@ APPUNTI:
   - valid / invalid | lo stato del campo è valido o non valido
   - dirty / pristine | il valore del campo è cambiato o non è cambiato
   - touched / untouched | il campo ha preso il focus o non ha preso il focus
+
+# - Fourth Commit - Reactive Form - FormGroup in Reactive2Component
+
+APPUNTI:
+
+- FormGroup è una classe che definisce un gruppo di FormControls
+- La proprietà del componente istanzia la classe FormGroup che conterrà le chiavi degli input
+- Lego il tag form [formGroup]='frmPersona'
+- Lego gli input alle chiavi formControlName='key'
+- FormGroup eredita proprietà e metodi della classe FormControl - Superclasse AbstractControl
 
 # NGForms
 

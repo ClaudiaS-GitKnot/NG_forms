@@ -12,9 +12,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Reactive1Component } from './components/reactive1/reactive1.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { Reactive2Component } from './components/reactive2/reactive2.component';
 
 @NgModule({
-  declarations: [AppComponent, TemplateDrivenComponent, Reactive1Component, HomeComponent, NavbarComponent],
+  declarations: [AppComponent, TemplateDrivenComponent, Reactive1Component, HomeComponent, NavbarComponent, Reactive2Component],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
