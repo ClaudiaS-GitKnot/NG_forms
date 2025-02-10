@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <!-- FormControl validation -->
+  <h3>FormControl con Custom Validator</h3>
+  <p>Questo campo accetta solo "Roma", "Milano" o "Napoli"</p>
+  <label for="citta">Città</label>
+  <input
+    [formControl]="citta"
+    type="text"
+    class="form-control"
+    id="citta"
+    name="citta"
+  />
+  <div *ngIf="citta.errors && citta.touched">
+    {{ citta.errors["cittaSconosciuta"]["valoreDigitato"] }} non è un valore
+    ammesso.
+    <!-- Digita una città tra Roma, Milano e Napoli (utilizzando valoriAmmessi) -->
+    Digita una città tra
+    {{
+      citta.errors["cittaSconosciuta"]["valoriAmmessi"].join(", ") | titlecase
+    }}.
+  </div>
+
+  <hr />
+  <!-- FormGroup validation -->
+  <h3>FormGroup con Custom Validator</h3>
+  <p>Questo FormGroup implementa il "digita password" e "ripeti password".</p>
+  <form [formGroup]="choose_pwd">
+    <label for="pwd">Password</label>
+    <input
+      formControlName="pwd"
+      type="password"
+      class="form-control"
+      id="pwd"
+      name="pwd"
+    />
+    <label for="repeat_pwd">Ripeti Password</label>
+    <input
+      formControlName="repeat_pwd"
+      type="password"
+      class="form-control"
+      id="repeat_pwd"
+      name="repeat_pwd"
+    />
+    <div *ngIf="choose_pwd.errors && choose_pwd.get('repeat_pwd')!.touched">
+      {{ choose_pwd.errors["msg"] }}
+    </div>
+    <button
+      type="submit"
+      class="mt-3 btn btn-primary"
+      [disabled]="choose_pwd.invalid"
+    >
+      Procedi
+    </button>
+  </form>
+</div>
