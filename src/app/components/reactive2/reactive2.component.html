@@ -34,6 +34,7 @@
       <label class="form-check-label" for="F">F</label>
     </div>
     <br />
+
     <button
       [disabled]="frmPersona.invalid"
       type="submit"
@@ -50,5 +51,36 @@
     <button (click)="leggiNome()" type="button" class="ms-1 btn btn-secondary">
       Leggi il nome
     </button>
+
+    <hr />
+
+    <!-- Indirizzo -->
+    <div formGroupName="indirizzo">
+      <label for="via">Piazza o Via</label>
+      <input formControlName="via" type="text" class="form-control" id="via" />
+      <label for="civico">Civico</label>
+      <input
+        formControlName="civico"
+        type="text"
+        class="form-control mb-2"
+        id="civico"
+      />
+      <button
+        (click)="setDefaultAddress()"
+        type="button"
+        class="ms-1 btn btn-primary"
+      >
+        Imposta indirizzo di default
+      </button>
+      <button
+        (click)="civicoSconosciuto()"
+        type="button"
+        class="ms-1 btn btn-primary"
+      >
+        Imposta indirizzo senza numero civico
+      </button>
+    </div>
+
+    <pre>{{ frmPersona.value | json }}</pre>
   </form>
 </div>

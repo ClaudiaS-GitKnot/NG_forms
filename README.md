@@ -48,6 +48,26 @@ APPUNTI:
 - Lego gli input alle chiavi formControlName='key'
 - FormGroup eredita proprietà e metodi della classe FormControl - Superclasse AbstractControl
 
+# - Fifth Commit - Reactive Form - FormGroup annidati in Reactive2Component
+
+APPUNTI:
+
+Annidamento di FormGroup contenenti dei FormControl
+
+In HTML:
+
+- [formGroup]='frmPersona' nel tag <form>
+- formGroupName='indirizzo' per il div che contiene i FormControl di 'indirizzo'
+- <label> e <input> hanno gli attributi for, formControlName e id con stesso valore
+- negli <input> inserisco il formControlName='via/civico'
+
+Refactoring di get('indirizzo') - reactive2.component.ts riga 44:
+
+- seleziono la porzione di codice che voglio semplificare
+- tasto destro -> refactoring
+- scelgo in cosa trasformarlo
+  Il refactoring può essere utile nelle form quando quella riga di codice viene ripetuta più volte.
+
 # NGForms
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.

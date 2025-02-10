@@ -10,6 +10,10 @@ export class Reactive2Component {
   frmPersona = new FormGroup({
     nome: new FormControl('', Validators.minLength(3)),
     gender: new FormControl('M'),
+    indirizzo: new FormGroup({
+      via: new FormControl(''),
+      civico: new FormControl(''),
+    }),
   });
 
   inviaPersona() {
@@ -20,6 +24,7 @@ export class Reactive2Component {
     this.frmPersona.setValue({
       nome: 'Laura',
       gender: 'F',
+      indirizzo: { via: '', civico: '' },
     });
   }
 
@@ -34,5 +39,21 @@ export class Reactive2Component {
   leggiNome() {
     const theName = this.frmPersona.get('nome')?.value;
     alert(`Hai digitato ${theName}`);
+  }
+
+  // Refactoring
+  setDefaultAddress() {
+    this.getIndirizzo().setValue({
+      via: 'Via Del Corso',
+      civico: '15',
+    });
+  }
+  private getIndirizzo() {
+    // Il valore di ritorno è un AbstractControl, se voglio che mi ritorni il FormGroup lo casto con 'as FormGroup'
+    return this.frmPersona.get('indirizzo')! as FormGroup;
+  }
+
+  civicoSconosciuto() {
+    this.getIndirizzo().get('civico')!.setValue('sconosciuto');
   }
 }
