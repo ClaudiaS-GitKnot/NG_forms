@@ -1,0 +1,142 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <h3>FormArray di FormControls</h3>
+  <div
+    *ngFor="let e of indirizzi_email.controls; let i = index; let primo = first"
+    class="row align-items-end"
+  >
+    <div class="col-8">
+      <label [for]="'email_' + i">Email</label>
+      <input
+        [formControl]="e"
+        type="text"
+        class="form-control mb-0"
+        [id]="'email_' + i"
+        [name]="'email_' + i"
+        [ngClass]="{ 'is-invalid': e.touched && e.invalid }"
+      />
+    </div>
+    <div class="col">
+      <button
+        (click)="addEmail()"
+        type="button"
+        class="btn btn-outline-success me-1"
+      >
+        Aggiungi
+      </button>
+      <button
+        (click)="removeEmail(i)"
+        type="button"
+        class="btn btn-danger"
+        [disabled]="primo"
+      >
+        Elimina
+      </button>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="btn btn-outline-warning mt-2 me-1"
+    (click)="eliminaTutte()"
+    *ngIf="indirizzi_email.length !== 0"
+  >
+    Elimina tutte
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-warning mt-2 me-1"
+    (click)="eliminaEmailNonValide()"
+  >
+    Elimina email Invalide
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-warning mt-2"
+    (click)="mostraEmailNonValide()"
+  >
+    Evidenzia le email Invalide
+  </button>
+  <pre>{{ indirizzi_email.value | json }}</pre>
+
+  <hr />
+
+  <h3>FormArray di FormGroup</h3>
+  <form [formGroup]="frm">
+    <div class="row align-items-end">
+      <div class="col">
+        <label for="nome">Nome</label>
+        <input
+          formControlName="nome"
+          type="text"
+          class="form-control"
+          id="nome"
+          name="nome"
+        />
+      </div>
+      <div class="col">
+        <label for="cognome">Cognome</label>
+        <input
+          formControlName="cognome"
+          type="text"
+          class="form-control"
+          id="cognome"
+          name="cognome"
+        />
+      </div>
+      <div class="col-12">
+        <div
+          *ngFor="let g of indirizziControls"
+          class="border bg-light p-3 mt-3"
+        >
+          <div [formGroup]="g" class="row">
+            <div class="col">
+              <label for="via">Via</label>
+              <input
+                formControlName="via"
+                type="text"
+                class="form-control"
+                id="via"
+                name="via"
+              />
+            </div>
+            <div class="col">
+              <label for="cap">CAP</label>
+              <input
+                formControlName="cap"
+                type="text"
+                class="form-control"
+                id="cap"
+                name="cap"
+              />
+            </div>
+          </div>
+        </div>
+        <pre>{{ frm.value | json }}</pre>
+        <button
+          (click)="addIndirizzo()"
+          type="button"
+          class="btn btn-primary mt-3"
+        >
+          Aggiungi
+        </button>
+        <button
+          (click)="caricaIndirizzi()"
+          type="button"
+          class="btn btn-primary mt-3 ms-3"
+        >
+          Carica Indirizzi
+        </button>
+      </div>
+      <div class="col-12">
+        <label for="note">Note</label>
+        <textarea
+          formControlName="note"
+          class="form-control"
+          id="note"
+          name="note"
+        ></textarea>
+      </div>
+    </div>
+  </form>
+</div>

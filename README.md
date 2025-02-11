@@ -75,3 +75,16 @@ Refactoring di get('indirizzo') - reactive2.component.ts riga 44:
   - pipe titlecase
 - Controllo inserimento password in due FormControl di un FormGroup
   - gestione errore con operatore ternario e messaggio
+
+# - Seventh Commit - Reactive Form - FormArray in Reactive4Component
+
+APPUNTI:
+
+FormArray di FormControls
+Ciclo su input e index per gli attributi -> let i = index;
+Disabilitare l'eliminazione dell'unico input presente -> let primo = first -> [disabled]='primo'
+
+FormArray di FormGroup
+Creare un FormGroup contenente un FormArray di FormGroup
+Getter per estensione classe AbstractControl (al posto dei metodi)
+Precompilare i campi di un FormArray con dati del backend

@@ -14,9 +14,10 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { Reactive2Component } from './components/reactive2/reactive2.component';
 import { Reactive3Component } from './components/reactive3/reactive3.component';
+import { Reactive4Component } from './components/reactive4/reactive4.component';
 
 @NgModule({
-  declarations: [AppComponent, TemplateDrivenComponent, Reactive1Component, HomeComponent, NavbarComponent, Reactive2Component, Reactive3Component],
+  declarations: [AppComponent, TemplateDrivenComponent, Reactive1Component, HomeComponent, NavbarComponent, Reactive2Component, Reactive3Component, Reactive4Component],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
